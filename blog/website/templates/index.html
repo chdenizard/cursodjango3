@@ -1,0 +1,13 @@
+<h1>Blog</h1>
+
+{{name}}
+<ul>
+{% for item in lista_tecnologia %}
+    {% if item == 'Django' %}
+        <li><b>{{item}}</b></li>
+    {% else %}
+        <li>{{item}}</li>
+    {% endif %}
+{% endfor %}
+</ul>
+
