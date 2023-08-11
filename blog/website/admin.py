@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title','sub_title']
     
     def get_queryset(self, request):
-        return Post.objects.filter(approved = True)
+        return Post.objects.all()
     
 
 admin.site.register(Post, PostAdmin)
