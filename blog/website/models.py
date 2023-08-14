@@ -4,6 +4,14 @@ class Categorias(models.TextChoices):
     TECH = 'TC', 'Tecnologia'
     CR = 'CR', 'Curiosidades'
     GR = 'GR', 'Geral'
+    
+class Contact(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    message = models.TextField()
+    
+    def __str__(self) -> str:
+        return self.name
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -27,3 +35,14 @@ class Post(models.Model):
         return self.get_categories_display()
     
     full_name.admin_order_field = 'title'
+    
+class ProdutividadeBase(models.Model):
+    name = models.CharField(max_length=150)
+    secao = models.CharField(max_length=150)
+    percentual = models.FloatField()
+    
+class ProdutividadeSedoc(ProdutividadeBase):
+    complexidade = models.CharField(max_length=150)
+    
+class ProdutividadeAdt(ProdutividadeBase):
+    complexidade = models.CharField(max_length=150)

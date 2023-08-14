@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Contact
 
 def hello_blog(request):
     lista = ['Django','Python']
@@ -15,3 +15,14 @@ def hello_blog(request):
 def post_detail(request, id):
     post = Post.objects.get(id=id)
     return render(request, 'post_detail.html', {'post': post})
+
+def save_form(request):
+    Contact.objects.create(
+        name = request.POST['name'],
+        email = request.POST['email'],
+        message = request.POST['message'],
+    )
+    
+    name = request.POST['name']
+    
+    return render(request, 'contato_recebido.html', {'name_contact': name})
